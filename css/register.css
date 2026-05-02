@@ -1,0 +1,118 @@
+/* Full-page gradient background */
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4c669f, #3b5998, #192f6a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+/* Wrapper to allow scrolling on small screens */
+.form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Form container */
+.register-form {
+    background-color: #ffffffee;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Heading */
+.register-form h2 {
+    margin-bottom: 24px;
+    color: #3b5998;
+}
+
+/* Labels and inputs */
+.register-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.register-form input,
+.register-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.register-form button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #3b5998;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.register-form button:hover {
+    background: #2f4773;
+}
+
+/* Login link below button */
+.register-form .login-link {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.register-form .login-link a {
+    color: #3b5998;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-form .login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Fully responsive for mobile */
+@media (max-width: 500px) {
+    .register-form {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .register-form button {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .register-form input,
+    .register-form select {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+/* For very small screens: make form scrollable */
+@media (max-height: 600px) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
