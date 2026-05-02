@@ -24,14 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
             $_SESSION['utype'] = $user['utype'];
 
-            // log login
             $logStmt = $conn->prepare("INSERT INTO user_log (user_id) VALUES (?)");
             $logStmt->bind_param("i", $user['user_id']);
             $logStmt->execute();
 
             $_SESSION['log_id'] = $conn->insert_id;
 
-            // ROUTING FIX
             if ($user['utype'] === "admin") {
                 header("Location: admin_dashboard.php");
                 exit();
@@ -55,29 +53,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
+
+    <style>
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
 </head>
+
 <body>
 
-<form method="POST" class="login-form">
-    <h2>Login</h2>
+<div class="login-form">
 
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
+    <!-- HEADER / LOGO SECTION -->
+    <div class="header">
+        <!-- Optional logo image -->
+        <img src="imgs/1.png" class="logo">
 
-    <?php if (!empty($errors)): ?>
-        <div style="color:red;">
-            <?php foreach ($errors as $e) echo $e . "<br>"; ?>
-        </div>
-    <?php endif; ?>
+        <div class="title">Flight Service Satisfaction</div>
+        <div class="subtitle">AI-Based Airline Prediction System</div>
+    </div>
 
-    <button type="submit">Login</button>
+    <form method="POST">
 
-    <!-- REGISTER LINK -->
-    <p style="margin-top:10px;">
-        Don't have an account?
-        <a href="register.php">Register here</a>
-    </p>
-</form>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <?php if (!empty($errors)): ?>
+            <div style="color:red;">
+                <?php foreach ($errors as $e) echo $e . "<br>"; ?>
+            </div>
+        <?php endif; ?>
+
+        <button type="submit">Login</button>
+
+        <p style="margin-top:10px;">
+            Don't have an account?
+            <a href="register.php">Register here</a>
+        </p>
+
+    </form>
+
+</div>
 
 </body>
 </html>
